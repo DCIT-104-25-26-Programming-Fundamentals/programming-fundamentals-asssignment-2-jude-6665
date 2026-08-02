@@ -68,8 +68,113 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+
 using namespace std;
 
+
+
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+double divideNumbers(double a, double b) {
+    return a / b;
+}
+
+int performModulus(int a, int b) {
+    return a % b;
+}
+
+double power(double base, double exp) {
+    return pow(base, exp);
+}
+
+
+
+void showMenu() {
+    cout << "\n============================\n";
+    cout << "     SIMPLE CALCULATOR     \n";
+    cout << "============================\n";
+    cout << "1. Addition\n";
+    cout << "2. Subtraction\n";
+    cout << "3. Multiplication\n";
+    cout << "4. Division\n";
+    cout << "5. Modulus\n";
+    cout << "6. Exponentiation\n";
+    cout << "7. Quit\n";
+    cout << "Select an operation (1-7): ";
+}
+
+
+
+int main() {
+    int choice = 0;
+    double num1, num2;
+
+    
+    cout << fixed << setprecision(2);
+
+    while (true) {
+        showMenu();
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!\n";
+            break;
+        }
+
+        if (choice < 1 || choice > 7) {
+            cout << "Invalid selection! Please choose a number between 1 and 7.\n";
+            continue;
+        }
+
+        cout << "Enter first number : ";
+        cin >> num1;
+        cout << "Enter second number: ";
+        cin >> num2;
+
+        switch (choice) {
+            case 1:
+                cout << "Result: " << num1 << " + " << num2 << " = " << add(num1, num2) << "\n";
+                break;
+            case 2:
+                cout << "Result: " << num1 << " - " << num2 << " = " << subtract(num1, num2) << "\n";
+                break;
+            case 3:
+                cout << "Result: " << num1 << " * " << num2 << " = " << multiply(num1, num2) << "\n";
+                break;
+            case 4:
+                if (num2 == 0) {
+                    cout << "Error: Cannot divide by zero.\n";
+                } else {
+                    cout << "Result: " << num1 << " / " << num2 << " = " << divideNumbers(num1, num2) << "\n";
+                }
+                break;
+            case 5:
+                if (static_cast<int>(num2) == 0) {
+                    cout << "Error: Cannot divide by zero.\n";
+                } else {
+                    cout << "Result: " << static_cast<int>(num1) << " % " << static_cast<int>(num2) 
+                         << " = " << performModulus(static_cast<int>(num1), static_cast<int>(num2)) << "\n";
+                }
+                break;
+            case 6:
+                cout << "Result: " << num1 << " ^ " << num2 << " = " << power(num1, num2) << "\n";
+                break;
+        }
+    }
+
+    return 0;
+}
